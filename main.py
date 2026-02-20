@@ -5,11 +5,19 @@
 """
 
 import ctypes
+import os
+import sys
 import tkinter as tk
 from tkinter import messagebox
 import keyboard
 
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("keyboard-off")
+
+
+def resource_path(name):
+    """PyInstaller の --onefile でも動くリソースパスを返す"""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, name)
 
 # ── カラーパレット ──────────────────────────────
 BG        = "#f1f5f9"   # アプリ背景
@@ -50,7 +58,7 @@ class App:
         self._captured_keys  = set()
         self._device_trace_id = None
 
-        self.root.iconbitmap("icon.ico")
+        self.root.iconbitmap(resource_path("icon.ico"))
         self._build_main()
         self.root.protocol("WM_DELETE_WINDOW", self._on_close)
 

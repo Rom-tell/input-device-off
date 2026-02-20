@@ -23,7 +23,7 @@ jobs:
         run: pip install keyboard pynput pyinstaller pillow
 
       - name: Build exe
-        run: pyinstaller --onefile --windowed --icon=icon.ico --name="input-device-off" main.py
+        run: pyinstaller --onefile --windowed --icon=icon.ico --add-data "icon.ico;." --name="input-device-off" main.py
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
