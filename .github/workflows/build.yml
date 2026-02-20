@@ -1,0 +1,38 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install keyboard pynput pyinstaller pillow
+
+      - name: Build exe
+        run: pyinstaller --onefile --windowed --icon=icon.ico --name="input-device-off" main.py
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/input-device-off.exe
+          name: "入力デバイスオフ ${{ github.ref_name }}"
+          body: |
+            ## ダウンロード
+            `input-device-off.exe` をダウンロードして実行してね（Python不要）
+
+            ## 使い方
+            1. exe を起動
+            2. 無効化するデバイスを選択（キーボード or マウス）
+            3. 「無効化する」ボタンを押す
+            4. 掃除が終わったら「解除する」ボタンまたはショートカットキーで復帰
