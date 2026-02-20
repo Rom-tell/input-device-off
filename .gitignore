@@ -5,3 +5,4 @@ dist/
 *.spec
 .claude/
 CLAUDE.md
+spec.md
