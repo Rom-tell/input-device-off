@@ -1,5 +1,11 @@
 # 入力デバイスオフ
 
+⚠️ **Notice / 注意事項**  
+このリポジトリはオープンソースとして公開していますが、個人利用目的で管理しているため、バグ報告、機能要望、プルリクエストなどのサポートやコミュニケーションは一切受け付けておりません。  
+This repository is public, but I do not accept any issues, pull requests, or personal inquiries. Thank you for understanding.
+
+---
+
 掃除中などにキーボードやマウスを一時的に無効化するWindowsアプリです。
 
 ## 特徴
